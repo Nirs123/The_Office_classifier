@@ -1,5 +1,4 @@
 import joblib
-from sklearn.feature_extraction.text import TfidfVectorizer
 import spacy
 import string
 import streamlit as st
