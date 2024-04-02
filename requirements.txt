@@ -1,4 +1,3 @@
 joblib
 spacy
-string
 streamlit
