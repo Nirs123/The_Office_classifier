@@ -1,0 +1,5 @@
+sklearn
+joblib
+spacy
+string
+streamlit
