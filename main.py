@@ -4,10 +4,8 @@ import string
 import streamlit as st
 import os
 
-os.system("python -m spacy download en_core_web_sm")
-
 nlp = spacy.load("en_core_web_sm")
-spacy_stopwords = list(spacy.lang.en.stop_words.STOP_WORDS)
+spacy_stopwords = spacy.lang.en.STOP_WORDS
 
 def preprocess_text(text):
     text = text.lower().strip()
