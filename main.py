@@ -4,7 +4,7 @@ import string
 import streamlit as st
 import os
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("en_core_web_sm", disable=['parser', 'ner'])
 spacy_stopwords = spacy.lang.en.STOP_WORDS
 
 def preprocess_text(text):
