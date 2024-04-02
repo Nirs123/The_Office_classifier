@@ -2,9 +2,8 @@ import joblib
 import spacy
 import string
 import streamlit as st
-import os
 
-nlp = spacy.load("en_core_web_sm", disable=['parser', 'ner'])
+nlp = spacy.load("en_core_web_sm")
 spacy_stopwords = spacy.lang.en.STOP_WORDS
 
 def preprocess_text(text):
@@ -23,14 +22,18 @@ def preprocess_text(text):
 rl_classifier = joblib.load('rl_classifier.joblib')
 tfidf_vectorizer = joblib.load('vectorizer.joblib')
 
-st.title("Which character of The Office are you ?")
+def main():
+    st.title("Which character of The Office are you ?")
 
-user_input = st.text_area("Enter a sentence to see which character of The Office you are")
+    user_input = st.text_area("Enter a sentence to see which character of The Office you are")
 
-if st.button("Predict"):
-    user_input = preprocess_text(user_input)
-    user_input_tfidf = tfidf_vectorizer.transform([user_input])
-    prediction = rl_classifier.predict(user_input_tfidf)
-    st.markdown(f"## The character you are is **{prediction[0]}**")
+    if st.button("Predict"):
+        user_input = preprocess_text(user_input)
+        user_input_tfidf = tfidf_vectorizer.transform([user_input])
+        prediction = rl_classifier.predict(user_input_tfidf)
+        st.markdown(f"## The character you are is **{prediction[0]}**")
 
-    st.image(f"images/{prediction[0].lower()}.jpg", width=700)
+        st.image(f"images/{prediction[0].lower()}.jpg", width=700)
+
+if __name__ == "__main__":
+    main()
