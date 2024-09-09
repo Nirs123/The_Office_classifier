@@ -2,6 +2,10 @@ import joblib
 import spacy
 import string
 import streamlit as st
+import warnings
+
+warnings.filterwarnings("ignore", message="numpy.dtype size changed")
+warnings.filterwarnings("ignore", message="numpy.ufunc size changed")
 
 nlp = spacy.load("en_core_web_sm")
 spacy_stopwords = spacy.lang.en.STOP_WORDS
