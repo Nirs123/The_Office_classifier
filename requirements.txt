@@ -1,4 +1,5 @@
 joblib
+numpy==1.26.4
 streamlit
 scikit-learn
 spacy==3.7.4
